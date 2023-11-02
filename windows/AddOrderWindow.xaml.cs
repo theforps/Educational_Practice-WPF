@@ -1,5 +1,4 @@
 ﻿using educational_practice.data;
-using educational_practice.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,22 +15,25 @@ using System.Windows.Shapes;
 
 namespace educational_practice.windows
 {
-    public partial class MainMenu : Window
+    /// <summary>
+    /// Логика взаимодействия для AddOrderWindow.xaml
+    /// </summary>
+    public partial class AddOrderWindow : Window
     {
-        public MainMenu()
+        public AddOrderWindow()
         {
             InitializeComponent();
-
-            Title.Text = db.users.FirstOrDefault(x => x.Id == db.idOfUser).Name;
-
-            var orders = db.orders.Where(x => x.idUser == db.idOfUser);
-
-            Orders.ItemsSource = orders;
-
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            MainMenuUser mainMenuUser = new MainMenuUser();
+            mainMenuUser.Show();
             this.Close();
         }
 
@@ -42,6 +44,5 @@ namespace educational_practice.windows
             login.Show();
             this.Close();
         }
-
     }
 }

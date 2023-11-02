@@ -51,8 +51,11 @@ namespace educational_practice.windows
             {
                 db.idOfUser = user.Id;
 
-                MainMenu mainMenu = new MainMenu();
-                mainMenu.Show();
+                if(user.Roles == Roles.USER.ToString())
+                {
+                    MainMenuUser mainMenu = new MainMenuUser();
+                    mainMenu.Show();
+                }
                 this.Close();
             }
         }

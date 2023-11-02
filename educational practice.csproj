@@ -55,11 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="windows\AddOrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="windows\MainMenu.xaml">
+    <Page Include="windows\MainMenuAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\MainMenuUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -75,11 +83,17 @@
     <Compile Include="models\Order.cs" />
     <Compile Include="models\Roles.cs" />
     <Compile Include="models\User.cs" />
+    <Compile Include="windows\AddOrderWindow.xaml.cs">
+      <DependentUpon>AddOrderWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="windows\MainMenu.xaml.cs">
-      <DependentUpon>MainMenu.xaml</DependentUpon>
+    <Compile Include="windows\MainMenuAdmin.xaml.cs">
+      <DependentUpon>MainMenuAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\MainMenuUser.xaml.cs">
+      <DependentUpon>MainMenuUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
