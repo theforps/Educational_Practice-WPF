@@ -1,26 +1,14 @@
 ﻿using educational_practice.data;
 using educational_practice.models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace educational_practice.windows
 {
-    /// <summary>
-    /// Логика взаимодействия для OrderInfo.xaml
-    /// </summary>
     public partial class OrderInfo : Window
     {
+        CRUD crud = new CRUD();
+        Order order;
+
         public OrderInfo()
         {
             InitializeComponent();
@@ -32,10 +20,10 @@ namespace educational_practice.windows
 
             OrderNumber.Text = "Номер заявки " + Id.ToString();
 
-            var order = db.orders.FirstOrDefault(x => x.Id == Id);
-            var client = db.users.FirstOrDefault(x => x.Id == order.idUser).Name;
-            var executor = db.users.Find(x => x.Id == order.idExecuter && x.Roles == Roles.EXECUTOR.ToString());
-
+            order = crud.getOrderById(Id);
+            var client = crud.getUserById(order.idUser);
+            var executor = crud.getUserById(order.idExecuter);
+            var user = crud.getUserById(db.idOfUser);
 
             if (order != null)
             {
@@ -44,20 +32,21 @@ namespace educational_practice.windows
                 Date.Text = order.date.ToString();
                 Model.Text = order.Model;
                 Type.Text = order.Type;
-                Client.Text = client + " " + order.idUser;
+                Client.Text = client.Name + " " + order.idUser;
 
-                if (executor != null)
+                if(order.Comment != null)
                 {
-                    Executor.Text = executor.Name + " " + executor.Id;
+                    Comment.Text = order.Comment;
                 }
+
+                if (executor != null && executor.Roles == Roles.EXECUTOR.ToString())
+                    Executor.Text = executor.Name + " " + executor.Id;
                 else
                     Executor.Text = "Исполнитель не назначен";
-
             }
 
-
-
-
+            if(user.Roles == Roles.EXECUTOR.ToString() || user.Roles == Roles.MANAGER.ToString())
+                EditBut.Visibility = Visibility.Visible;
         }
 
         private void Exit(object sender, RoutedEventArgs e)
@@ -67,16 +56,24 @@ namespace educational_practice.windows
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            MainMenuUser mainMenuUser = new MainMenuUser();
-            mainMenuUser.Show();
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
             this.Close();
         }
 
         private void SignOut(object sender, RoutedEventArgs e)
         {
             db.idOfUser = -1;
+
             Login login = new Login();
             login.Show();
+            this.Close();
+        }
+
+        private void UpdateOrder(object sender, RoutedEventArgs e)
+        {
+            EditOrder editOrder = new EditOrder(order);
+            editOrder.Show();
             this.Close();
         }
     }

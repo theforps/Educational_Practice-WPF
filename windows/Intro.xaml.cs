@@ -6,12 +6,12 @@ using System.Windows.Threading;
 
 namespace educational_practice
 {
-    public partial class MainWindow : Window
+    public partial class Intro : Window
     {
 
         DispatcherTimer timer = new DispatcherTimer();
 
-        public MainWindow()
+        public Intro()
         {
             InitializeComponent();
 

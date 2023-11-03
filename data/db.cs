@@ -50,6 +50,13 @@ namespace educational_practice.data
             "Износ" 
         };
 
+        public static List<string> status = new List<string>()
+        {
+            "Выполнено",
+            "В ожидании",
+            "Не выполнено"
+        };
+
         public static List<Order> orders = new List<Order>
         {
             new Order()
@@ -57,11 +64,11 @@ namespace educational_practice.data
                 Id = 0,
                 Model = "Телефон",
                 Description = "Не делает Алё",
-                Type = "Сломалась трубка",
-                Status = "В ожидании",
+                Type = "Износ", 
+                Status = "Не выполнено",
                 date = DateTime.Now,
                 idUser = 2,
-                idExecuter = 2
+                idExecuter = -1
             }
         };
     }

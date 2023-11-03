@@ -55,10 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="data\CRUD.cs" />
+    <Compile Include="windows\EditOrder.xaml.cs">
+      <DependentUpon>EditOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\OrderInfo.xaml.cs">
       <DependentUpon>OrderInfo.xaml</DependentUpon>
     </Compile>
-    <Page Include="windows\AddOrderWindow.xaml">
+    <Page Include="windows\AddOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\EditOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -66,11 +74,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="windows\MainMenuUser.xaml">
+    <Page Include="windows\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="windows\MainWindow.xaml">
+    <Page Include="windows\Intro.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -82,17 +90,17 @@
     <Compile Include="models\Order.cs" />
     <Compile Include="models\Roles.cs" />
     <Compile Include="models\User.cs" />
-    <Compile Include="windows\AddOrderWindow.xaml.cs">
-      <DependentUpon>AddOrderWindow.xaml</DependentUpon>
+    <Compile Include="windows\AddOrder.xaml.cs">
+      <DependentUpon>AddOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="windows\MainMenuUser.xaml.cs">
-      <DependentUpon>MainMenuUser.xaml</DependentUpon>
+    <Compile Include="windows\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="windows\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="windows\Intro.xaml.cs">
+      <DependentUpon>Intro.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="windows\OrderInfo.xaml">
