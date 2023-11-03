@@ -98,22 +98,24 @@
         </Button>
 
         <TextBlock 
+            TextAlignment="Center"
             Name="Disc" 
             FontSize="20" 
             HorizontalAlignment="Left"
-            Margin="125,212,0,0" 
+            Margin="126,203,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="161" 
+            Height="183" 
             Width="275" 
             Text="Описание"/>
 
         <TextBlock 
+            TextAlignment="Center"
             Name="Status" 
             FontSize="20" 
             HorizontalAlignment="Left" 
-            Margin="400,147,0,0" 
+            Margin="400,138,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
@@ -122,10 +124,11 @@
             Text="Статус заявки"/>
 
         <TextBlock 
+            TextAlignment="Center"
             x:Name="Date" 
             FontSize="20" 
             HorizontalAlignment="Left" 
-            Margin="125,147,0,0" 
+            Margin="125,130,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
@@ -134,6 +137,7 @@
             Text="Дата создания"/>
 
         <TextBlock 
+            TextAlignment="Center"
             x:Name="Model" 
             FontSize="20" 
             HorizontalAlignment="Left" 
@@ -146,6 +150,7 @@
             Text="Модель"/>
 
         <TextBlock 
+            TextAlignment="Center"
             x:Name="Type" 
             FontSize="20" 
             HorizontalAlignment="Left" 
@@ -158,6 +163,7 @@
             Text="Тип неисправности"/>
 
         <TextBlock 
+            TextAlignment="Center"
             x:Name="Client" 
             FontSize="20" 
             HorizontalAlignment="Left" 
@@ -170,6 +176,7 @@
             Text="Клиент"/>
 
         <TextBlock 
+            TextAlignment="Center"
             x:Name="Executor" 
             FontSize="20" 
             HorizontalAlignment="Left" 
@@ -182,14 +189,15 @@
             Text="Исполнитель"/>
         
         <TextBlock 
+            TextAlignment="Center"
             x:Name="Comment" 
             FontSize="20" 
             HorizontalAlignment="Left"
-            Margin="400,213,0,0" 
+            Margin="400,203,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="160" 
+            Height="183" 
             Width="275" 
             Text="Комментариев нет"/>
     </Grid>

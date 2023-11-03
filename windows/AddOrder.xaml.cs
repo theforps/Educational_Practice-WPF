@@ -46,7 +46,7 @@ namespace educational_practice.windows
                 Model = Model.Text,
                 Description = Desc.Text,
                 Type = Bads.Text,
-                Status = "В ожидании",
+                Status = "Не выполнено",
                 date = DateTime.Now,
                 idUser = db.idOfUser,
                 idExecuter = -1

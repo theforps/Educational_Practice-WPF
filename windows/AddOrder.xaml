@@ -81,19 +81,20 @@
             Описание проблемы
         </TextBlock>
         <TextBox 
+            TextWrapping="Wrap"
             Name="Desc"
             FontSize="20"
             Grid.Row="4" 
             Margin="60 40 60 15"
             BorderThickness="2"
             BorderBrush="Black">
-            
         </TextBox>
 
         <TextBlock 
             Grid.Row="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
+            TextWrapping="Wrap"
             FontSize="30"
             FontWeight="Bold">
             Модель оборудования
