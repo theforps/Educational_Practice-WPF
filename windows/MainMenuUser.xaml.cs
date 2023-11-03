@@ -2,7 +2,9 @@
 using educational_practice.models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,7 +24,7 @@ namespace educational_practice.windows
         {
             InitializeComponent();
 
-            var orders = db.orders.Where(x => x.idUser == db.idOfUser);
+            var orders = db.orders.Where(x => x.idUser == db.idOfUser).OrderByDescending(x => x.Id);
 
             Orders.ItemsSource = orders;
 
@@ -43,7 +45,7 @@ namespace educational_practice.windows
 
         private void SearchOrder(object sender, RoutedEventArgs e)
         {
-            var param = Search.Text;
+            var param = Search.Text.ToLower();
 
             var orders = db.orders.Where(x => 
             x.Status.Contains(param) || 
@@ -60,6 +62,24 @@ namespace educational_practice.windows
             AddOrderWindow addOrder = new AddOrderWindow();
             addOrder.Show();
             this.Close();
+        }
+
+        private void Info(object sender, RoutedEventArgs e)
+        {
+            int idOrder = Orders.SelectedIndex;
+            
+            if(idOrder > -1)
+            {
+                var order = db.orders[idOrder];
+
+                OrderInfo info = new OrderInfo(order.Id);
+                info.Show();
+                this.Close();
+
+            }
+
+            
+            
         }
     }
 }

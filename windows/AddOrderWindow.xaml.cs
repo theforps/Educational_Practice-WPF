@@ -1,4 +1,5 @@
 ﻿using educational_practice.data;
+using educational_practice.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace educational_practice.windows
         public AddOrderWindow()
         {
             InitializeComponent();
+
+            Bads.ItemsSource = db.faults;
+            Bads.SelectedIndex = 0;
         }
 
         private void Exit(object sender, RoutedEventArgs e)
@@ -42,6 +46,27 @@ namespace educational_practice.windows
             db.idOfUser = -1;
             Login login = new Login();
             login.Show();
+            this.Close();
+        }
+
+        private void AddOrder(object sender, RoutedEventArgs e)
+        {
+            Order order = new Order
+            {
+                Id = ++db.counter,
+                Model = Model.Text,
+                Description = Desc.Text,
+                Type = Bads.Text,
+                Status = "В ожидании",
+                date = DateTime.Now,
+                idUser = db.idOfUser
+                
+            };
+
+            db.orders.Add(order);
+
+            MainMenuUser user = new MainMenuUser();
+            user.Show();
             this.Close();
         }
     }

@@ -1,15 +1,12 @@
 ﻿using educational_practice.models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace educational_practice.data
 {
     public class db
     {
-        private static int counter = 0;
+        public static int counter = 0;
         public static int idOfUser;
 
         public static List<User> users = new List<User>
@@ -44,6 +41,13 @@ namespace educational_practice.data
                 Roles = Roles.EXECUTOR.ToString()
             },
 
+        };
+
+        public static List<string> faults = new List<string>() 
+        { 
+            "Брак", 
+            "Короткое замыкание", 
+            "Износ" 
         };
 
         public static List<Order> orders = new List<Order>

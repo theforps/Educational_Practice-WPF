@@ -130,7 +130,7 @@
                             <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Grid.Column="0">Заявка №</TextBlock>
                             <TextBlock HorizontalAlignment="Center"  Text="{Binding Id}" FontSize="15" FontWeight="Bold" Grid.Column="1"></TextBlock>
                             <TextBlock HorizontalAlignment="Center"  Text="{Binding Status}" FontSize="15" FontWeight="Bold" Grid.Column="2"></TextBlock>
-                            <Button HorizontalAlignment="Center"  FontSize="15" Grid.Column="3">Подробнее</Button>
+                            <Button HorizontalAlignment="Center" Click="Info"  FontSize="15" Grid.Column="3">Подробнее</Button>
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
