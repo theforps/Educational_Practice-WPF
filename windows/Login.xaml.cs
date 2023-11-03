@@ -48,5 +48,16 @@ namespace educational_practice.windows
                 this.Close();
             }
         }
+
+        public bool check(string login, string password)
+        {
+            var user = crud.getUserByName(login);
+            if (user != null && user.Password.Equals(password))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
