@@ -1,10 +1,6 @@
 ﻿using educational_practice.models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace educational_practice.data
 {
@@ -52,11 +48,11 @@ namespace educational_practice.data
             param = param.ToLower();
             
             var orders = db.orders.Where(x =>
-            x.Status.Contains(param) ||
-            x.Type.Contains(param) ||
-            x.Description.Contains(param) ||
-            x.Model.Contains(param) ||
-            param.Contains(x.Id.ToString())).ToList();
+            x.Status.ToLower().Contains(param) ||
+            x.Type.ToLower().Contains(param) ||
+            x.Description.ToLower().Contains(param) ||
+            x.Model.ToLower().Contains(param) ||
+            param.ToLower().Contains(x.Id.ToString())).ToList();
 
             return orders;
         }

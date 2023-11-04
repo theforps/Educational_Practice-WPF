@@ -64,6 +64,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="data\CRUD.cs" />
+    <Compile Include="scripts\Buttons.cs" />
     <Compile Include="tests\Test.cs" />
     <Compile Include="windows\EditOrder.xaml.cs">
       <DependentUpon>EditOrder.xaml</DependentUpon>

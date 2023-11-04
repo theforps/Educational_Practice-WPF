@@ -6,14 +6,15 @@ namespace educational_practice.data
 {
     public class db
     {
-        public static int counter = 0;
+        public static int counterOrder = 0;
+        public static int counterUser = 0;
         public static int idOfUser;
 
         public static List<User> users = new List<User>
         {
             new User()
             {
-                Id = ++counter,
+                Id = ++counterUser,
                 Login = "admin",
                 Password = "admin",
                 Email = "admin@admin.ru",
@@ -23,7 +24,7 @@ namespace educational_practice.data
 
             new User()
             {
-                Id = ++counter,
+                Id = ++counterUser,
                 Login = "user",
                 Password = "user",
                 Email = "user@user.ru",
@@ -33,7 +34,7 @@ namespace educational_practice.data
 
             new User()
             {
-                Id = ++counter,
+                Id = ++counterUser,
                 Login = "executor",
                 Password = "executor",
                 Email = "executor@executor.ru",
@@ -61,7 +62,7 @@ namespace educational_practice.data
         {
             new Order()
             {
-                Id = 0,
+                Id = ++counterOrder,
                 Model = "Телефон",
                 Description = "Не делает Алё",
                 Type = "Износ", 

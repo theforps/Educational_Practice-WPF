@@ -1,5 +1,6 @@
 ﻿using educational_practice.data;
 using educational_practice.models;
+using educational_practice.scripts;
 using System.Linq;
 using System.Windows;
 
@@ -16,30 +17,19 @@ namespace educational_practice.windows
             var user = crud.getUserById(db.idOfUser);
             Title.Text = user.Name.ToUpper();
 
-            if (user.Roles == Roles.USER.ToString()) {
+            if (user.Roles == Roles.USER.ToString())
+            {
                 AddNewOrderBut.Visibility = Visibility.Visible;
-            }
-
-            if(user.Roles == Roles.USER.ToString())
                 Orders.ItemsSource = crud.getOrders().Where(x => x.idUser == user.Id);
-            else if(user.Roles == Roles.EXECUTOR.ToString())
+            }
+            else if (user.Roles == Roles.EXECUTOR.ToString())
+            {
                 Orders.ItemsSource = crud.getOrders().Where(x => x.idExecuter == user.Id);
-            else if(user.Roles == Roles.MANAGER.ToString())
-                Orders.ItemsSource = crud.getOrders();  
-        }
-
-        private void Exit(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void SignOut(object sender, RoutedEventArgs e)
-        {
-            db.idOfUser = -1;
-
-            Login login = new Login();
-            login.Show();
-            this.Close();
+            }
+            else if (user.Roles == Roles.MANAGER.ToString())
+            {
+                Orders.ItemsSource = crud.getOrders();
+            }
         }
 
         private void SearchOrder(object sender, RoutedEventArgs e)
@@ -49,23 +39,29 @@ namespace educational_practice.windows
             Orders.ItemsSource = orders;
         }
 
-        private void AddOrder(object sender, RoutedEventArgs e)
-        {
-            AddOrder addOrder = new AddOrder();
-            addOrder.Show();
-            this.Close();
-        }
-
         private void Info(object sender, RoutedEventArgs e)
         {
             var selectedOrder = (Order)Orders.SelectedItem;
 
             if (selectedOrder != null)
             {
-                OrderInfo info = new OrderInfo(selectedOrder.Id);
-                info.Show();
-                this.Close();
+                Buttons.Back(this, new OrderInfo(selectedOrder.Id));
             }
+        }
+
+        private void AddOrder(object sender, RoutedEventArgs e)
+        {
+
+            Buttons.Back(this, new AddOrder());
+        }
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            Buttons.Exit(this);
+        }
+
+        private void SignOut(object sender, RoutedEventArgs e)
+        {
+            Buttons.SignOut(this, new Login());
         }
     }
 }

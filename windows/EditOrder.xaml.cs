@@ -1,5 +1,6 @@
 ﻿using educational_practice.data;
 using educational_practice.models;
+using educational_practice.scripts;
 using System;
 using System.Linq;
 using System.Windows;
@@ -22,74 +23,72 @@ namespace educational_practice.windows
 
             User user = crud.getUserById(db.idOfUser);
 
-            orderId = order.Id;
-
-            OrderNumber.Text = "Номер заявки " + order.Id;
-            Disc.Text = order.Description;
-
-            Status.ItemsSource = db.status;
-            Status.Text = order.Status;
-
-            Date.Text = order.date.ToString();
-            Model.Text = order.Model;
-
-            Type.ItemsSource = db.faults;
-            Type.Text = order.Type;
-
-            Client.Text = crud.getUserById(order.idUser).Name + " " + order.idUser;
-
-            Executor.ItemsSource = crud.getUsers().Where(x => x.Roles == Roles.EXECUTOR.ToString()).Select(x => x.Name);
-            
-            if(order.idExecuter > -1)
-                Executor.Text = crud.getUserById(order.idExecuter).Name;
-
-            Comment.Text = order.Comment;
-
-            if (user.Roles == Roles.EXECUTOR.ToString())
             {
-                Type.IsEnabled = false;
-                Executor.IsEnabled = false;
+                orderId = order.Id;
+                OrderNumber.Text = "Номер заявки " + order.Id;
+                Disc.Text = order.Description;
+                Status.ItemsSource = db.status;
+                Status.Text = order.Status;
+                Date.Text = order.date.ToString();
+                Model.Text = order.Model;
+                Type.ItemsSource = db.faults;
+                Type.Text = order.Type;
+                Comment.Text = order.Comment;
+                Client.Text = crud.getUserById(order.idUser).Name + " " + order.idUser;
+                Executor.ItemsSource = crud.getUsers().Where(x => x.Roles == Roles.EXECUTOR.ToString()).Select(x => x.Name);
 
-                Disc.IsReadOnly = true;
+
+                if (order.idExecuter > -1)
+                    Executor.Text = crud.getUserById(order.idExecuter).Name;
+
+                if (user.Roles == Roles.EXECUTOR.ToString())
+                {
+                    Type.IsEnabled = false;
+                    Executor.IsEnabled = false;
+                    Disc.IsReadOnly = true;
+                }
             }
-        }
-
-        private void Exit(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Back(object sender, RoutedEventArgs e)
-        {
-            MainMenu mainMenu = new MainMenu();
-            mainMenu.Show();
-            this.Close();
-        }
-
-        private void SignOut(object sender, RoutedEventArgs e)
-        {
-            db.idOfUser = -1;
-
-            Login login = new Login();
-            login.Show();
-            this.Close();
         }
 
         private void SaveBut(object sender, RoutedEventArgs e)
         {
             Order order = crud.getOrderById(orderId);
+            User executor = crud.getUserByName(Executor.Text);
 
-            order.Status = Status.Text;
-            order.idExecuter = crud.getUserByName(Executor.Text).Id;
-            order.Comment = Comment.Text;
-            order.Description = Disc.Text;
-            order.Type = Type.Text;
+            if (executor == null ||
+                Status.Text.Trim().Equals("") ||
+                Disc.Text.Trim().Equals("") ||
+                Type.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Все поля должны быть заполнены");
+            }
+            else
+            {
+                order.idExecuter = executor.Id;
+                order.Status = Status.Text.Trim();
+                order.Comment = Comment.Text.Trim();
+                order.Description = Disc.Text.Trim();
+                order.Type = Type.Text.Trim();
 
-            crud.saveOrder(order);
+                crud.saveOrder(order);
 
-            MainMenu mainMenu = new MainMenu();
-            mainMenu.Show();
-            this.Close();
+                Buttons.Back(this, new MainMenu());
+            }
+        }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            Buttons.Exit(this);
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            Buttons.Back(this, new MainMenu());
+        }
+
+        private void SignOut(object sender, RoutedEventArgs e)
+        {
+            Buttons.SignOut(this, new Login());
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using educational_practice.data;
 using educational_practice.models;
+using educational_practice.scripts;
 using System;
 using System.Windows;
 
@@ -19,44 +20,43 @@ namespace educational_practice.windows
 
         private void Exit(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Buttons.Exit(this);
         }
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            MainMenu mainMenu = new MainMenu();
-            mainMenu.Show();
-            this.Close();
+            Buttons.Back(this, new MainMenu());
         }
 
         private void SignOut(object sender, RoutedEventArgs e)
         {
-            db.idOfUser = -1;
-
-            Login login = new Login();
-            login.Show();
-            this.Close();
+            Buttons.SignOut(this, new Login());
         }
 
         private void SaveOrder(object sender, RoutedEventArgs e)
         {
-            Order order = new Order
+            if (Model.Text.Trim().Equals("") || Desc.Text.Trim().Equals("") || Bads.Text.Trim().Equals(""))
             {
-                Id = ++db.counter,
-                Model = Model.Text,
-                Description = Desc.Text,
-                Type = Bads.Text,
-                Status = "Не выполнено",
-                date = DateTime.Now,
-                idUser = db.idOfUser,
-                idExecuter = -1
-            };
+                MessageBox.Show("Все поля должны быть заполнены");
+            }
+            else
+            {
+                Order order = new Order
+                {
+                    Id = ++db.counterOrder,
+                    Model = Model.Text.Trim(),
+                    Description = Desc.Text.Trim(),
+                    Type = Bads.Text.Trim(),
+                    Status = "Не выполнено",
+                    date = DateTime.Now,
+                    idUser = db.idOfUser,
+                    idExecuter = -1
+                };
 
-            crud.addOrder(order);
+                crud.addOrder(order);
 
-            MainMenu user = new MainMenu();
-            user.Show();
-            this.Close();
+                Buttons.Back(this, new MainMenu());
+            }
         }
     }
 }

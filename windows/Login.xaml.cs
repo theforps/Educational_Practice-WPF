@@ -1,5 +1,6 @@
 ﻿using educational_practice.data;
 using educational_practice.models;
+using educational_practice.scripts;
 using System.Linq;
 using System.Windows;
 
@@ -17,7 +18,7 @@ namespace educational_practice.windows
 
         private void Exit(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Buttons.Exit(this);
         }
 
         private void Enter(object sender, RoutedEventArgs e)
@@ -43,9 +44,7 @@ namespace educational_practice.windows
             {
                 db.idOfUser = user.Id;
 
-                MainMenu mainMenu = new MainMenu();
-                mainMenu.Show();
-                this.Close();
+                Buttons.Back(this, new MainMenu());
             }
         }
 
