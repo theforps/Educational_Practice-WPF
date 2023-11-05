@@ -1,7 +1,7 @@
-﻿using educational_practice.windows;
+﻿using educational_practice.scripts;
+using educational_practice.windows;
 using System;
 using System.Windows;
-using System.Windows.Navigation;
 using System.Windows.Threading;
 
 namespace educational_practice
@@ -15,18 +15,15 @@ namespace educational_practice
         {
             InitializeComponent();
 
-            timer.Interval = new System.TimeSpan(0, 0, 2);
-
+            timer.Interval = new TimeSpan(0, 0, 2);
             timer.Tick += new EventHandler(introStop);
-
             timer.Start();
         }
 
         private void introStop(object obj, EventArgs e)
         {
-            Login login = new Login();
-            login.Show();
-            this.Close();
+            Buttons.Back(this, new Login());
+
             timer.Stop();
         }
 

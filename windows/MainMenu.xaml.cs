@@ -14,8 +14,8 @@ namespace educational_practice.windows
         {
             InitializeComponent();
 
-            var user = crud.getUserById(db.idOfUser);
-            Title.Text = user.Name.ToUpper();
+            var user = crud.getUserById(Consts.ID_CURRENT_USER);
+            TitleBar.Text = user.Name.ToUpper();
 
             if (user.Roles == Roles.USER.ToString())
             {

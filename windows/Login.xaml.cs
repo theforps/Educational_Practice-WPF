@@ -42,7 +42,7 @@ namespace educational_practice.windows
             }
             else
             {
-                db.idOfUser = user.Id;
+                Consts.ID_CURRENT_USER = user.Id;
 
                 Buttons.Back(this, new MainMenu());
             }

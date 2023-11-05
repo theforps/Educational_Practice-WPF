@@ -20,11 +20,11 @@ namespace educational_practice.windows
             InitializeComponent();
 
             {
-                OrderNumber.Text = "Номер заявки " + Id.ToString();
+                OrderNumber.Text = "Заявка № " + Id.ToString();
                 order = crud.getOrderById(Id);
                 var client = crud.getUserById(order.idUser);
                 var executor = crud.getUserById(order.idExecuter);
-                var user = crud.getUserById(db.idOfUser);
+                var user = crud.getUserById(Consts.ID_CURRENT_USER);
 
                 if (order != null)
                 {
@@ -33,7 +33,7 @@ namespace educational_practice.windows
                     Date.Text = order.date.ToString();
                     Model.Text = order.Model;
                     Type.Text = order.Type;
-                    Client.Text = client.Name + " " + order.idUser;
+                    Client.Text = client.Name + "\n" + client.Email;
 
                     if (order.Comment != null)
                     {
@@ -41,7 +41,7 @@ namespace educational_practice.windows
                     }
 
                     if (executor != null && executor.Roles == Roles.EXECUTOR.ToString())
-                        Executor.Text = executor.Name + " " + executor.Id;
+                        Executor.Text = executor.Name;
                     else
                         Executor.Text = "Исполнитель не назначен";
                 }

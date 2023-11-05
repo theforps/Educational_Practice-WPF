@@ -21,20 +21,21 @@ namespace educational_practice.windows
         {
             InitializeComponent();
 
-            User user = crud.getUserById(db.idOfUser);
+            User user = crud.getUserById(Consts.ID_CURRENT_USER);
 
             {
                 orderId = order.Id;
                 OrderNumber.Text = "Номер заявки " + order.Id;
                 Disc.Text = order.Description;
-                Status.ItemsSource = db.status;
+                Status.ItemsSource = Db.status;
                 Status.Text = order.Status;
                 Date.Text = order.date.ToString();
                 Model.Text = order.Model;
-                Type.ItemsSource = db.faults;
+                Type.ItemsSource = Db.faults;
                 Type.Text = order.Type;
                 Comment.Text = order.Comment;
-                Client.Text = crud.getUserById(order.idUser).Name + " " + order.idUser;
+                var client = crud.getUserById(order.idUser);
+                Client.Text = client.Name + "\n" + client.Email;
                 Executor.ItemsSource = crud.getUsers().Where(x => x.Roles == Roles.EXECUTOR.ToString()).Select(x => x.Name);
 
 

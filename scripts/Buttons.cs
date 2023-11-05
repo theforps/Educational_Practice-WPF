@@ -19,7 +19,7 @@ namespace educational_practice.scripts
 
         public static void SignOut(Window current, Window main)
         {
-            db.idOfUser = -1;
+            Consts.ID_CURRENT_USER = -1;
 
             main.Show();
             current.Close();

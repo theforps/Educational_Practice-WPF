@@ -65,6 +65,7 @@
     </ApplicationDefinition>
     <Compile Include="data\CRUD.cs" />
     <Compile Include="scripts\Buttons.cs" />
+    <Compile Include="scripts\Consts.cs" />
     <Compile Include="tests\Test.cs" />
     <Compile Include="windows\EditOrder.xaml.cs">
       <DependentUpon>EditOrder.xaml</DependentUpon>
@@ -96,7 +97,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\db.cs" />
+    <Compile Include="data\Db.cs" />
     <Compile Include="models\Order.cs" />
     <Compile Include="models\Roles.cs" />
     <Compile Include="models\User.cs" />

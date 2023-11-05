@@ -8,46 +8,46 @@ namespace educational_practice.data
     {
         public void addOrder(Order order)
         {
-            db.orders.Add(order);
+            Db.orders.Add(order);
         }
 
         public List<string> getFaults()
         {
-            return db.faults;
+            return Db.faults;
         }
 
         public User getUserByName(string name) {
             
-            return db.users.FirstOrDefault(x => x.Login.Equals(name));
+            return Db.users.FirstOrDefault(x => x.Login.Equals(name));
         }
 
         public User getUserById(int id)
         {
-            return db.users.FirstOrDefault(x => x.Id == id);
+            return Db.users.FirstOrDefault(x => x.Id == id);
         }
 
         public List<User> getUsers()
         {
-            return db.users;
+            return Db.users;
         }
 
         public List<Order> getOrders()
         {
-            var orders = db.orders.OrderByDescending(x => x.date).ToList();
+            var orders = Db.orders.OrderByDescending(x => x.date).ToList();
 
             return orders;
         }
 
         public Order getOrderById(int id)
         {
-            return db.orders.FirstOrDefault(x => x.Id == id);
+            return Db.orders.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Order> getOrdersByParam(string param)
         {
             param = param.ToLower();
             
-            var orders = db.orders.Where(x =>
+            var orders = Db.orders.Where(x =>
             x.Status.ToLower().Contains(param) ||
             x.Type.ToLower().Contains(param) ||
             x.Description.ToLower().Contains(param) ||
@@ -59,8 +59,8 @@ namespace educational_practice.data
 
         public void saveOrder(Order order)
         {
-            db.orders.Remove(order);
-            db.orders.Add(order);
+            Db.orders.Remove(order);
+            Db.orders.Add(order);
         }
 
     }

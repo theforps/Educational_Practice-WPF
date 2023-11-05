@@ -43,13 +43,13 @@ namespace educational_practice.windows
             {
                 Order order = new Order
                 {
-                    Id = ++db.counterOrder,
+                    Id = ++Db.counterOrder,
                     Model = Model.Text.Trim(),
                     Description = Desc.Text.Trim(),
                     Type = Bads.Text.Trim(),
                     Status = "Не выполнено",
                     date = DateTime.Now,
-                    idUser = db.idOfUser,
+                    idUser = Consts.ID_CURRENT_USER,
                     idExecuter = -1
                 };
 

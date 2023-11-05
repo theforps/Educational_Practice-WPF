@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 namespace educational_practice.data
 {
-    public class db
+    public class Db
     {
         public static int counterOrder = 0;
         public static int counterUser = 0;
-        public static int idOfUser;
 
         public static List<User> users = new List<User>
         {
@@ -18,17 +17,27 @@ namespace educational_practice.data
                 Login = "admin",
                 Password = "admin",
                 Email = "admin@admin.ru",
-                Name = "admin",
+                Name = "Леший Л.В.",
                 Roles = Roles.MANAGER.ToString()
             },
 
             new User()
             {
                 Id = ++counterUser,
-                Login = "user",
-                Password = "user",
-                Email = "user@user.ru",
-                Name = "user",
+                Login = "user1",
+                Password = "user1",
+                Email = "user1@user.ru",
+                Name = "Баракуев Н.Т.",
+                Roles = Roles.USER.ToString()
+            },
+
+            new User()
+            {
+                Id = ++counterUser,
+                Login = "user2",
+                Password = "user2",
+                Email = "user2@user.ru",
+                Name = "Абакуев О.А.",
                 Roles = Roles.USER.ToString()
             },
 
@@ -38,7 +47,7 @@ namespace educational_practice.data
                 Login = "executor",
                 Password = "executor",
                 Email = "executor@executor.ru",
-                Name = "executor",
+                Name = "Сторецкий П.К.",
                 Roles = Roles.EXECUTOR.ToString()
             },
 
@@ -48,7 +57,8 @@ namespace educational_practice.data
         { 
             "Брак", 
             "Короткое замыкание", 
-            "Износ" 
+            "Износ",
+            "Другое"
         };
 
         public static List<string> status = new List<string>()
