@@ -97,7 +97,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\Db.cs" />
+    <Compile Include="data\DB.cs" />
     <Compile Include="models\Order.cs" />
     <Compile Include="models\Roles.cs" />
     <Compile Include="models\User.cs" />
