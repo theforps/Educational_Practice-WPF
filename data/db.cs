@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace educational_practice.data
 {
-    public class Db
+    public class DB
     {
         public static int counterOrder = 0;
         public static int counterUser = 0;

@@ -43,7 +43,7 @@ namespace educational_practice.windows
             {
                 Order order = new Order
                 {
-                    Id = ++Db.counterOrder,
+                    Id = ++DB.counterOrder,
                     Model = Model.Text.Trim(),
                     Description = Desc.Text.Trim(),
                     Type = Bads.Text.Trim(),

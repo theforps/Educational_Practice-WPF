@@ -27,11 +27,11 @@ namespace educational_practice.windows
                 orderId = order.Id;
                 OrderNumber.Text = "Номер заявки " + order.Id;
                 Disc.Text = order.Description;
-                Status.ItemsSource = Db.status;
+                Status.ItemsSource = DB.status;
                 Status.Text = order.Status;
                 Date.Text = order.date.ToString();
                 Model.Text = order.Model;
-                Type.ItemsSource = Db.faults;
+                Type.ItemsSource = DB.faults;
                 Type.Text = order.Type;
                 Comment.Text = order.Comment;
                 var client = crud.getUserById(order.idUser);
