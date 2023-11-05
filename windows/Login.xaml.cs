@@ -23,25 +23,24 @@ namespace educational_practice.windows
 
         private void Enter(object sender, RoutedEventArgs e)
         {
-            User user = crud.getUserByName(Nick.Text);
+            string login = Nick.Text;
+            string password = Password.Text;
 
-            if (Password.Text.Length < 4) {
-                MessageBox.Show("Пароль должен содержать минимум 4 символов");
-            }
-            else if (Nick.Text.Length < 4)
+            if (login.Length < 4)
             {
                 MessageBox.Show("Логин должен содержать минимум 4 символов");
             }
-            else if(user == null)
+            else if (password.Length < 4)
             {
-                MessageBox.Show("Пользователя не существует");
+                MessageBox.Show("Пароль должен содержать минимум 4 символов");
             }
-            else if(!user.Password.Equals(Password.Text))
+            else if (check(login, password))
             {
-                MessageBox.Show("Неправильный пароль");
+                MessageBox.Show("Неправильный логин или пароль");
             }
             else
             {
+                User user = crud.getUserByName(login);
                 Consts.ID_CURRENT_USER = user.Id;
 
                 Buttons.Back(this, new MainMenu());
