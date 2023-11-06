@@ -34,7 +34,7 @@ namespace educational_practice.windows
             {
                 MessageBox.Show("Пароль должен содержать минимум 4 символов");
             }
-            else if (check(login, password))
+            else if (!check(login, password))
             {
                 MessageBox.Show("Неправильный логин или пароль");
             }

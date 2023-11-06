@@ -16,9 +16,15 @@ namespace educational_practice.data
             return DB.faults;
         }
 
-        public User getUserByName(string name) {
+        public User getUserByName(string login) {
             
-            return DB.users.FirstOrDefault(x => x.Login.Equals(name));
+            return DB.users.FirstOrDefault(x => x.Login.Equals(login));
+        }
+
+        public User getUserByUserName(string name)
+        {
+
+            return DB.users.FirstOrDefault(x => x.Name.Equals(name));
         }
 
         public User getUserById(int id)

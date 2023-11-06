@@ -54,7 +54,7 @@ namespace educational_practice.windows
         private void SaveBut(object sender, RoutedEventArgs e)
         {
             Order order = crud.getOrderById(orderId);
-            User executor = crud.getUserByName(Executor.Text);
+            User executor = crud.getUserByUserName(Executor.Text);
 
             if (executor == null ||
                 Status.Text.Trim().Equals("") ||

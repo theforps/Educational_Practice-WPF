@@ -16,18 +16,19 @@
 
         <Label 
             Grid.Row="1"
+            Grid.RowSpan="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="50"
-            >Изготовитель</Label>
+            FontSize="70">
+            ООО "Техносервис"
+        </Label>
 
         <Label 
-        Grid.Row="2"
+        Grid.Row="3"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
-        FontSize="50"
-        >Исполнитель</Label>
-
-
+        FontSize="25">
+            Компания "IT-Решения"
+        </Label>
     </Grid>
 </Window>

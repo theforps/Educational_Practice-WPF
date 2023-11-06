@@ -8,36 +8,16 @@
         Title="Login" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25">
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <TextBlock 
@@ -123,6 +103,5 @@
             Click="Enter">
             Войти
         </Button>
-        
     </Grid>
 </Window>
