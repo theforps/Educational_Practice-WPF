@@ -54,18 +54,18 @@ namespace educational_practice.data
         };
 
         public static List<string> faults = new List<string>() 
-        { 
+        {
+            "Другое",
             "Брак", 
             "Короткое замыкание", 
-            "Износ",
-            "Другое"
+            "Износ"
         };
 
         public static List<string> status = new List<string>()
         {
+            "Не выполнено",
             "Выполнено",
-            "В ожидании",
-            "Не выполнено"
+            "В ожидании"
         };
 
         public static List<Order> orders = new List<Order>

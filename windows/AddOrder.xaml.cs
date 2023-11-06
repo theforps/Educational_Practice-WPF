@@ -16,6 +16,7 @@ namespace educational_practice.windows
 
             Bads.ItemsSource = crud.getFaults();
             Bads.SelectedIndex = 0;
+
         }
 
         private void Exit(object sender, RoutedEventArgs e)
