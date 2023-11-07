@@ -8,21 +8,11 @@
         Title="MainMenu" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"  Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25">
-
-            </RowDefinition>
-            <RowDefinition Height="70">
-
-            </RowDefinition>
-            <RowDefinition Height="50">
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition Height="80">
-
-            </RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
         </Grid.RowDefinitions>
 
         <TextBlock 
@@ -127,10 +117,28 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Grid.Column="0">Заявка №</TextBlock>
-                            <TextBlock HorizontalAlignment="Center"  Text="{Binding Id}" FontSize="15" FontWeight="Bold" Grid.Column="1"></TextBlock>
-                            <TextBlock HorizontalAlignment="Center"  Text="{Binding Status}" FontSize="15" FontWeight="Bold" Grid.Column="2"></TextBlock>
-                            <Button HorizontalAlignment="Center" Click="Info"  FontSize="15" Grid.Column="3">Подробнее</Button>
+                            <TextBlock 
+                                HorizontalAlignment="Center" 
+                                FontSize="15"
+                                FontWeight="Bold" 
+                                Grid.Column="0">Заявка №</TextBlock>
+                            <TextBlock 
+                                HorizontalAlignment="Center"  
+                                Text="{Binding Id}" 
+                                FontSize="15" 
+                                FontWeight="Bold" 
+                                Grid.Column="1"></TextBlock>
+                            <TextBlock 
+                                HorizontalAlignment="Center"  
+                                Text="{Binding Status}" 
+                                FontSize="15" 
+                                FontWeight="Bold" 
+                                Grid.Column="2"></TextBlock>
+                            <Button 
+                                HorizontalAlignment="Center" 
+                                Click="Info"  
+                                FontSize="15" 
+                                Grid.Column="3">Подробнее</Button>
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
