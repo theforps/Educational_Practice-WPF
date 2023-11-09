@@ -1,9 +1,6 @@
-﻿using educational_practice.data;
-using educational_practice.data.repos;
+﻿using educational_practice.data.repos;
 using educational_practice.models;
 using educational_practice.scripts;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 
 namespace educational_practice.windows
@@ -37,6 +34,11 @@ namespace educational_practice.windows
             }
             else if (user.Role.Name.Equals("manager"))
             {
+                State1.Visibility = Visibility.Visible;
+                State2.Visibility = Visibility.Visible;
+
+                CompletedCount.Text = db.completedInvoices().ToString();
+                AvgCompleted.Text = db.avgExecution().ToString();
                 Orders.ItemsSource = db.getAllInvoices();
             }
         }

@@ -8,21 +8,11 @@
         Title="AddOrder" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"  Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25">
-
-            </RowDefinition>
-            <RowDefinition Height="70">
-
-            </RowDefinition>
-            <RowDefinition Height="80">
-
-            </RowDefinition>
-            <RowDefinition Height="80">
-
-            </RowDefinition>
-            <RowDefinition>
-
-            </RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <TextBlock 
@@ -80,6 +70,7 @@
             FontWeight="Bold">
             Описание проблемы
         </TextBlock>
+        
         <TextBox 
             TextWrapping="Wrap"
             Name="Desc"
@@ -119,6 +110,7 @@
             HorizontalAlignment="Left">
             Назад
         </Button>
+        
         <Button 
             Click="SaveOrder"
             Grid.Row="1" 

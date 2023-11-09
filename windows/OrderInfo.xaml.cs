@@ -1,5 +1,4 @@
-﻿using educational_practice.data;
-using educational_practice.data.repos;
+﻿using educational_practice.data.repos;
 using educational_practice.models;
 using educational_practice.scripts;
 using System.Windows;
@@ -30,22 +29,38 @@ namespace educational_practice.windows
             OrderNumber.Text = "Заявка № " + Id.ToString();
 
             User user = db.getUserById(Consts.ID_CURRENT_USER);
+            User executor = null;
+
 
             if (order != null)
             {
                 Disc.Text = order.Description;
                 Status.Text = order.Status.Name;
-                Date.Text = order.StartDate.ToString();
+                DateStart.Text = order.StartDate.ToString();
                 Type.Text = order.Defect.Name;
                 Client.Text = order.Client.Name + " " + order.Client.Surname;
+                Price.Text = order.Defect.Price.ToString() + " руб.";
 
+                if(order.StartDate < order.EndDate)
+                {
+                    DateEnd.Text = order.EndDate.ToString();
+                }
+                else
+                {
+                    DateEnd.Text = "Не завершено";
+                }
                 if (order.Comment != null)
                 {
                     Comment.Text = order.Comment;
                 }
 
-                if (order.Executor != null && order.Executor.Role.Name.Equals("executor"))
-                    Executor.Text = order.Executor.Name + " " + order.Executor.Surname;
+                if(order.Executor != null)
+                {
+                    executor = db.getUserById(order.Executor.Id);
+                }
+
+                if (executor != null && executor.Role.Name.Equals("executor"))
+                    Executor.Text = executor.Name + " " + executor.Surname;
                 else
                     Executor.Text = "Исполнитель не назначен";
             }

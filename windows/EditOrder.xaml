@@ -96,23 +96,24 @@
         </Button>
 
         <TextBox
-            TextAlignment="Center"
+            TextAlignment="Left"
             Name="Disc" 
-            FontSize="20" 
+            Padding="5"
+            FontSize="15" 
             HorizontalAlignment="Left"
-            Margin="125,202,0,0" 
+            Margin="20,240,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="181" 
-            Width="275" 
+            Height="154" 
+            Width="375" 
             Text="Описание"/>
 
         <ComboBox
             Name="Status" 
             FontSize="20" 
             HorizontalAlignment="Left" 
-            Margin="400,147,0,0" 
+            Margin="400,176,0,0" 
             Grid.Row="3"   
             VerticalAlignment="Top" 
             Height="30" 
@@ -120,78 +121,149 @@
             Text="Статус заявки"/>
 
         <TextBlock
-            TextAlignment="Center"
+            TextAlignment="Left"
             x:Name="Date" 
-            FontSize="20" 
+            FontSize="15" 
             HorizontalAlignment="Left" 
-            Margin="125,147,0,0" 
-            Grid.Row="3" 
-            TextWrapping="Wrap"  
+            Margin="20,180,0,0" 
+            Grid.Row="3"  
             VerticalAlignment="Top" 
-            Height="30" 
+            Height="22" 
             Width="275" 
             Text="Дата создания"/>
 
-        <TextBlock
-            TextAlignment="Center"
-            Name="Model" 
-            FontSize="20" 
-            HorizontalAlignment="Left" 
-            Margin="400,10,0,0" 
-            Grid.Row="3" 
-            TextWrapping="Wrap"  
-            VerticalAlignment="Top" 
-            Height="30" 
-            Width="275" 
-            Text="Модель"/>
-
         <ComboBox
             Name="Type" 
-            FontSize="20" 
-            HorizontalAlignment="Left" 
-            Margin="125,10,0,0" 
+            FontSize="15" 
+            Margin="20,35,0,0" 
             Grid.Row="3"  
+            HorizontalAlignment="Left"
             VerticalAlignment="Top" 
             Height="30" 
             Width="275" 
             Text="Тип неисправности"/>
 
         <TextBlock
-            
-            TextAlignment="Center"
+            TextAlignment="Left"
             x:Name="Client" 
-            FontSize="20" 
+            FontSize="15" 
             HorizontalAlignment="Left" 
-            Margin="400,80,0,0" 
+            Margin="400,108,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="30" 
+            Height="26" 
             Width="275" 
             Text="Клиент"/>
 
         <ComboBox
             x:Name="Executor" 
-            FontSize="20" 
+            FontSize="15" 
             HorizontalAlignment="Left" 
-            Margin="125,80,0,0" 
+            Margin="20,105,0,0" 
             Grid.Row="3"  
             VerticalAlignment="Top" 
             Height="30" 
-            Width="275" 
+            Width="274" 
             Text="Исполнитель"/>
 
         <TextBox
-            TextAlignment="Center"
+            TextAlignment="Left"
             x:Name="Comment" 
-            FontSize="20" 
+            Padding="5"
+            FontSize="15" 
             HorizontalAlignment="Left"
-            Margin="400,203,0,0" 
+            Margin="400,240,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="180" 
-            Width="275" 
+            Height="154" 
+            Width="380" 
             Text="Комментариев нет"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="20,3,0,0" 
+            Grid.Row="3"
+            FontSize="20" 
+            TextWrapping="Wrap" 
+            Text="Тип неисправности" 
+            VerticalAlignment="Top"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="20,73,0,0" 
+            Grid.Row="3"
+            FontSize="20" 
+            TextWrapping="Wrap" 
+            Text="Исполнитель" 
+            VerticalAlignment="Top"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="20,147,0,0" 
+            Grid.Row="3"
+            FontSize="20" 
+            TextWrapping="Wrap" 
+            Text="Дата создания" 
+            VerticalAlignment="Top"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="20,208,0,0" 
+            Grid.Row="3"
+            FontSize="20" 
+            TextWrapping="Wrap" 
+            Text="Описание проблемы" 
+            VerticalAlignment="Top"/>
+
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="400,3,0,0" 
+            Grid.Row="3"
+            FontSize="20" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top"
+            Text="Стоимость"/>
+
+        <TextBlock
+            TextAlignment="Left"
+            x:Name="Price" 
+            FontSize="15" 
+            HorizontalAlignment="Left" 
+            Margin="400,39,0,0" 
+            Grid.Row="3"  
+            VerticalAlignment="Top" 
+            Height="22" 
+            Width="275" 
+            Text="QQQ"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="400,73,0,0" 
+            Grid.Row="3"
+            FontSize="20" 
+            TextWrapping="Wrap" 
+            Text="Клиент" 
+            VerticalAlignment="Top"/>
+
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="400,208,0,0" 
+            Grid.Row="3"
+            FontSize="20" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top"
+            Text="Комментарий исполнителя"/>
+
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="400,147,0,0" 
+            Grid.Row="3"
+            FontSize="20" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top"
+            Text="Статус заявки"/>
+        
     </Grid>
 </Window>

@@ -109,18 +109,52 @@ namespace educational_practice.data.repos
 
         public void updateInvoice(Invoice invoice)
         {
-            db.invoices.Append(invoice);
+            Invoice oldInvoice = db.invoices.FirstOrDefault(x => x.Id == invoice.Id);
+
+            {
+                oldInvoice.Executor = invoice.Executor;
+                oldInvoice.Status = invoice.Status;
+                oldInvoice.Comment = invoice.Comment;
+                oldInvoice.Description = invoice.Description;
+                oldInvoice.Defect = invoice.Defect;
+                oldInvoice.EndDate = invoice.EndDate;
+            }
+
             db.SaveChanges();
         }
 
         public Invoice getInvoiceById(int id)
         {
-            return getAllInvoices().FirstOrDefault(x => x.Id == id);
+            return getAllInvoices()
+                .FirstOrDefault(x => x.Id == id);
         }
 
         public List<User> getExecutors()
         {
-            return getUsers().Where(x => x.Role.Name.Equals("executor")).ToList();
+            return getUsers()
+                .Where(x => x.Role.Name.Equals("executor"))
+                .ToList();
+        }
+
+        public int completedInvoices()
+        {
+            int count = db.invoices
+                .Include(x => x.Status)
+                .Where(x => x.Status.Name.Equals("Выполнено"))
+                .Count();
+
+            return count;
+        }
+
+        public int avgExecution()
+        {
+            var list = db.invoices.Where(x => x.Status.Name.Equals("Выполнено") && x.EndDate > x.StartDate).ToList();
+
+            var result = list
+                .Select(x => (x.EndDate - x.StartDate).Hours)
+                .Average();
+
+            return (int)result;
         }
     }
 }

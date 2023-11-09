@@ -1,5 +1,4 @@
-﻿using educational_practice.data.repos;
-using educational_practice.scripts;
+﻿using educational_practice.scripts;
 using educational_practice.windows;
 using System;
 using System.Windows;
@@ -16,7 +15,7 @@ namespace educational_practice
         {
             InitializeComponent();
 
-            timer.Interval = new TimeSpan(0, 0, 2);
+            timer.Interval = new TimeSpan(1500);
             timer.Tick += new EventHandler(introStop);
             timer.Start();
         }

@@ -40,6 +40,7 @@ namespace educational_practice.windows
             Comment.Text = order.Comment;
             Client.Text = order.Client.Name + " " + order.Client.Surname;
             Executor.ItemsSource = db.getExecutors().Select(x => x.Name + " " + x.Surname);
+            Price.Text = order.Defect.Price.ToString() + " руб.";
 
             if (order.Executor != null)
             {

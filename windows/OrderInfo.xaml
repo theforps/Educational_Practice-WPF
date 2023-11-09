@@ -97,108 +97,211 @@
             Изменить
         </Button>
 
+
+
         <TextBlock 
-            TextAlignment="Center"
+            TextAlignment="Left" 
             Name="Disc" 
-            FontSize="20" 
+            FontSize="15" 
             HorizontalAlignment="Left"
-            Margin="126,203,0,0" 
+            Margin="20,221,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="183" 
-            Width="275" 
-            Text="Описание"/>
+            Height="186" 
+            Width="364" 
+            Text="QQQ"/>
 
         <TextBlock 
-            TextAlignment="Center"
+            TextAlignment="Left"
             Name="Status" 
-            FontSize="20" 
+            FontSize="15" 
             HorizontalAlignment="Left" 
-            Margin="400,138,0,0" 
+            Margin="400,162,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="60" 
-            Width="275" 
-            Text="Статус заявки"/>
+            Height="27" 
+            Width="380" 
+            Text="QQQQQQ"/>
 
         <TextBlock 
-            TextAlignment="Center"
-            x:Name="Date" 
-            FontSize="20" 
+            TextAlignment="Left"
+            x:Name="DateStart" 
+            FontSize="15" 
             HorizontalAlignment="Left" 
-            Margin="125,130,0,0" 
+            Margin="20,162,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="60" 
-            Width="275" 
-            Text="Дата создания"/>
+            Height="22" 
+            Width="190" 
+            Text="QQQQQQQ"/>
 
         <TextBlock 
-            TextAlignment="Center"
-            x:Name="Model" 
-            FontSize="20" 
+            TextAlignment="Left"
+            x:Name="Price" 
+            FontSize="15" 
             HorizontalAlignment="Left" 
-            Margin="400,5,0,0" 
-            Grid.Row="4" 
+            Margin="400,27,0,0" 
+            Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="60" 
-            Width="275" 
-            Text="Модель"/>
+            Height="24" 
+            Width="380" 
+            Text="QQQQQ"/>
 
         <TextBlock 
-            TextAlignment="Center"
+            TextAlignment="Left"
             x:Name="Type" 
-            FontSize="20" 
-            HorizontalAlignment="Left" 
-            Margin="126,5,0,0" 
-            Grid.Row="4" 
+            FontSize="15" 
+            Margin="20,27,400,0" 
+            Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="60" 
-            Width="274" 
-            Text="Тип неисправности"/>
+            Height="24" 
+            Width="380" 
+            Text="QQQQQ"/>
 
         <TextBlock 
-            TextAlignment="Center"
+            TextAlignment="Left"
             x:Name="Client" 
-            FontSize="20" 
+            FontSize="15" 
             HorizontalAlignment="Left" 
-            Margin="400,65,0,0" 
-            Grid.Row="4" 
+            Margin="400,95,0,0" 
+            Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="60" 
-            Width="275" 
-            Text="Клиент"/>
+            Height="23" 
+            Width="380" 
+            Text="QQQQQ"/>
 
         <TextBlock 
-            TextAlignment="Center"
+            TextAlignment="Left"
             x:Name="Executor" 
-            FontSize="20" 
+            FontSize="15" 
             HorizontalAlignment="Left" 
-            Margin="125,65,0,0" 
-            Grid.Row="4" 
+            Margin="20,95,0,0" 
+            Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="60" 
-            Width="275" 
-            Text="Исполнитель"/>
+            Height="23" 
+            Width="380" 
+            Text="QQQQQ"/>
+
+        <TextBlock 
+            TextAlignment="Left"
+            x:Name="Comment" 
+            FontSize="15" 
+            HorizontalAlignment="Left"
+            Margin="400,221,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap"  
+            VerticalAlignment="Top" 
+            Height="186" 
+            Width="380" 
+            Text="QQQ"/>
+
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="20,0,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap" 
+            Text="Тип неисправности" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Width="190"/>
         
         <TextBlock 
-            TextAlignment="Center"
-            x:Name="Comment" 
-            FontSize="20" 
-            HorizontalAlignment="Left"
-            Margin="400,203,0,0" 
+            HorizontalAlignment="Left" 
+            Margin="20,63,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap" 
+            Text="Исполнитель" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Width="190"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="20,130,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap" 
+            Text="Дата создания" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Width="190"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="20,189,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap" 
+            Text="Описание проблемы" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Width="380"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" Margin="400,186,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap" 
+            Text="Комментарий исполнителя" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Width="380"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="400,130,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap" 
+            Text="Статус заявки" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Width="380"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="400,63,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap" 
+            Text="Клиент" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Width="380"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="400,0,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap" 
+            Text="Стоимость" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Width="190"/>
+        
+        <TextBlock 
+            HorizontalAlignment="Left" 
+            Margin="215,130,0,0" 
+            Grid.Row="3" 
+            TextWrapping="Wrap" 
+            Text="Дата завершения" 
+            FontSize="20"
+            VerticalAlignment="Top" 
+            Width="190"/>
+        
+        <TextBlock 
+            TextAlignment="Left"
+            x:Name="DateEnd" 
+            FontSize="15" 
+            HorizontalAlignment="Left" 
+            Margin="215,162,0,0" 
             Grid.Row="3" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="183" 
-            Width="275" 
-            Text="Комментариев нет"/>
+            Height="22" 
+            Width="190" 
+            Text="QQQQQQQ"/>
     </Grid>
 </Window>
