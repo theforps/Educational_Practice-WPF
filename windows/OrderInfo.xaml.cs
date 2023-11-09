@@ -1,4 +1,5 @@
 ﻿using educational_practice.data;
+using educational_practice.data.repos;
 using educational_practice.models;
 using educational_practice.scripts;
 using System.Windows;
@@ -7,48 +8,43 @@ namespace educational_practice.windows
 {
     public partial class OrderInfo : Window
     {
-        CRUD crud = new CRUD();
-        Order order;
-
-        public OrderInfo()
-        {
-            InitializeComponent();
-        }
+        private BaseRepository db;
+        private Invoice order;
 
         public OrderInfo(int Id)
         {
             InitializeComponent();
 
+            db = new BaseRepository();
+
+            order = db.getInvoiceById(Id);
+
+            OrderNumber.Text = "Заявка № " + Id.ToString();
+            
+            User user = db.getUserById(Consts.ID_CURRENT_USER);
+
+            if (order != null)
             {
-                OrderNumber.Text = "Заявка № " + Id.ToString();
-                order = crud.getOrderById(Id);
-                var client = crud.getUserById(order.idUser);
-                var executor = crud.getUserById(order.idExecuter);
-                var user = crud.getUserById(Consts.ID_CURRENT_USER);
+                Disc.Text = order.Description;
+                Status.Text = order.Status.Name;
+                Date.Text = order.StartDate.ToShortDateString();
+                Type.Text = order.Defect.Name;
+                Client.Text = order.Client.Name + " " + order.Client.Surname;
 
-                if (order != null)
+                if (order.Comment != null)
                 {
-                    Disc.Text = order.Description;
-                    Status.Text = order.Status;
-                    Date.Text = order.date.ToString();
-                    Model.Text = order.Model;
-                    Type.Text = order.Type;
-                    Client.Text = client.Name + "\n" + client.Email;
-
-                    if (order.Comment != null)
-                    {
-                        Comment.Text = order.Comment;
-                    }
-
-                    if (executor != null && executor.Roles == Roles.EXECUTOR.ToString())
-                        Executor.Text = executor.Name;
-                    else
-                        Executor.Text = "Исполнитель не назначен";
+                    Comment.Text = order.Comment;
                 }
 
-                if (user.Roles == Roles.EXECUTOR.ToString() || user.Roles == Roles.MANAGER.ToString())
-                    EditBut.Visibility = Visibility.Visible;
+                if (order.Executor != null && order.Executor.Role.Name.Equals("executor"))
+                    Executor.Text = order.Executor.Name + " " + order.Executor.Surname;
+                else
+                    Executor.Text = "Исполнитель не назначен";
             }
+
+            if (user.Role.Name.Equals("executor") || user.Role.Name.Equals("manager"))
+                EditBut.Visibility = Visibility.Visible;
+
         }
 
         private void Back(object sender, RoutedEventArgs e)

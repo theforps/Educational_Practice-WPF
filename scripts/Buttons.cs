@@ -1,5 +1,4 @@
-﻿using educational_practice.data;
-using System.Windows;
+﻿using System.Windows;
 
 namespace educational_practice.scripts
 {

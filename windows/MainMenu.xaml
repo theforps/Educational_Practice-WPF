@@ -130,7 +130,7 @@
                                 Grid.Column="1"></TextBlock>
                             <TextBlock 
                                 HorizontalAlignment="Center"  
-                                Text="{Binding Status}" 
+                                Text="{Binding Status.Name}" 
                                 FontSize="15" 
                                 FontWeight="Bold" 
                                 Grid.Column="2"></TextBlock>

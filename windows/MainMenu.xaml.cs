@@ -1,48 +1,56 @@
 ﻿using educational_practice.data;
+using educational_practice.data.repos;
 using educational_practice.models;
 using educational_practice.scripts;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace educational_practice.windows
 {
     public partial class MainMenu : Window
     {
-        CRUD crud = new CRUD();
+        private BaseRepository db;
 
         public MainMenu()
         {
             InitializeComponent();
 
-            var user = crud.getUserById(Consts.ID_CURRENT_USER);
-            TitleBar.Text = user.Name.ToUpper();
+            db = new BaseRepository();
 
-            if (user.Roles == Roles.USER.ToString())
+            User user = db.getUserById(Consts.ID_CURRENT_USER);
+            TitleBar.Text = user.Name + " " + user.Surname;
+
+            if (user.Role.Name.Equals("user"))
             {
                 AddNewOrderBut.Visibility = Visibility.Visible;
-                Orders.ItemsSource = crud.getOrders().Where(x => x.idUser == user.Id);
+                Orders.ItemsSource = db.getInvoicesByClient(user.Id);
             }
-            else if (user.Roles == Roles.EXECUTOR.ToString())
+            else if (user.Role.Name.Equals("executor"))
             {
-                Orders.ItemsSource = crud.getOrders().Where(x => x.idExecuter == user.Id);
+                Orders.ItemsSource = db.getInvoicesByExecutor(user.Id);
             }
-            else if (user.Roles == Roles.MANAGER.ToString())
+            else if (user.Role.Name.Equals("manager"))
             {
-                Orders.ItemsSource = crud.getOrders();
+                Orders.ItemsSource = db.getAllInvoices();
             }
         }
 
         private void SearchOrder(object sender, RoutedEventArgs e)
         {
-            var orders = crud.getOrdersByParam(Search.Text.ToLower());
+            int id; 
+            
+            if(int.TryParse(Search.Text, out id))
+            {
+                var orders = db.getInvoicesById(id);
 
-            Orders.ItemsSource = orders;
+                Orders.ItemsSource = orders;
+            }
         }
 
         private void Info(object sender, RoutedEventArgs e)
         {
-            var selectedOrder = (Order)Orders.SelectedItem;
+            Invoice selectedOrder = (Invoice)Orders.SelectedItem;
 
             if (selectedOrder != null)
             {

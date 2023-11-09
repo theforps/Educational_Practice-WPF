@@ -1,4 +1,4 @@
-﻿using educational_practice.windows;
+﻿using educational_practice.data.repos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace educational_practice.tests
@@ -7,11 +7,12 @@ namespace educational_practice.tests
     public class Test
     {
         [TestMethod]
-        public void Test1()
+        public async void Test1()
         {
-            Login login = new Login();
+            BaseRepository db = new BaseRepository();
+            bool check = await db.checkUserExist("executor1", "executor1");
 
-            Assert.AreEqual(true, login.check("executor", "executor"));
+            Assert.AreEqual(true, check);
         }
     }
 }

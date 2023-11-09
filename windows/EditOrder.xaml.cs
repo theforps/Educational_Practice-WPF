@@ -1,4 +1,5 @@
 ﻿using educational_practice.data;
+using educational_practice.data.repos;
 using educational_practice.models;
 using educational_practice.scripts;
 using System;
@@ -9,52 +10,51 @@ namespace educational_practice.windows
 {
     public partial class EditOrder : Window
     {
-        CRUD crud = new CRUD();
-        int orderId;
+        private int orderId;
+        private BaseRepository db;
 
         public EditOrder()
         {
             InitializeComponent();
         }
 
-        public EditOrder(Order order)
+        public EditOrder(Invoice order)
         {
             InitializeComponent();
 
-            User user = crud.getUserById(Consts.ID_CURRENT_USER);
+            db = new BaseRepository();
 
+            User user = db.getUserById(Consts.ID_CURRENT_USER);
+
+            orderId = order.Id;
+            OrderNumber.Text = "Номер заявки " + order.Id;
+            Disc.Text = order.Description;
+            Status.ItemsSource = db.getStatuses().Select(x => x.Name);
+            Status.Text = order.Status.Name;
+            Date.Text = order.StartDate.ToShortDateString();
+            Type.ItemsSource = db.getDefects().Select(x => x.Name);
+            Type.Text = order.Defect.Name;
+            Comment.Text = order.Comment;
+            Client.Text = order.Client.Name + " " + order.Client.Surname;
+            Executor.ItemsSource = db.getExecutors().Select(x => x.Name + " " + x.Surname);
+
+            if (order.Executor != null)
+            { 
+                Executor.Text = order.Executor.Name + " " + order.Executor.Surname;
+            }
+
+            if (user.Role.Name.Equals("executor"))
             {
-                orderId = order.Id;
-                OrderNumber.Text = "Номер заявки " + order.Id;
-                Disc.Text = order.Description;
-                Status.ItemsSource = DB.status;
-                Status.Text = order.Status;
-                Date.Text = order.date.ToString();
-                Model.Text = order.Model;
-                Type.ItemsSource = DB.faults;
-                Type.Text = order.Type;
-                Comment.Text = order.Comment;
-                var client = crud.getUserById(order.idUser);
-                Client.Text = client.Name + "\n" + client.Email;
-                Executor.ItemsSource = crud.getUsers().Where(x => x.Roles == Roles.EXECUTOR.ToString()).Select(x => x.Name);
-
-
-                if (order.idExecuter > -1)
-                    Executor.Text = crud.getUserById(order.idExecuter).Name;
-
-                if (user.Roles == Roles.EXECUTOR.ToString())
-                {
-                    Type.IsEnabled = false;
-                    Executor.IsEnabled = false;
-                    Disc.IsReadOnly = true;
-                }
+                Type.IsEnabled = false;
+                Executor.IsEnabled = false;
+                Disc.IsReadOnly = true;
             }
         }
 
         private void SaveBut(object sender, RoutedEventArgs e)
         {
-            Order order = crud.getOrderById(orderId);
-            User executor = crud.getUserByUserName(Executor.Text);
+            Invoice order = db.getInvoiceById(orderId);
+            User executor = db.getUserByName(Executor.Text);
 
             if (executor == null ||
                 Status.Text.Trim().Equals("") ||
@@ -65,13 +65,16 @@ namespace educational_practice.windows
             }
             else
             {
-                order.idExecuter = executor.Id;
-                order.Status = Status.Text.Trim();
+                order.Executor = executor;
+                order.Status = db.getStatusByName(Status.Text.Trim());
                 order.Comment = Comment.Text.Trim();
                 order.Description = Disc.Text.Trim();
-                order.Type = Type.Text.Trim();
+                order.Defect = db.getDefectByName(Type.Text.Trim());
 
-                crud.saveOrder(order);
+                if(order.Status.Name.Equals("Выполнено"))
+                    order.EndDate = DateTime.Now;
+
+                db.updateInvoice(order);
 
                 Buttons.Back(this, new MainMenu());
             }

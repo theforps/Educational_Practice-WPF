@@ -1,20 +1,23 @@
-﻿using educational_practice.data;
+﻿using educational_practice.data.repos;
 using educational_practice.models;
 using educational_practice.scripts;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace educational_practice.windows
 {
     public partial class AddOrder : Window
     {
-        CRUD crud = new CRUD();
+        private BaseRepository db;
 
         public AddOrder()
         {
             InitializeComponent();
 
-            Bads.ItemsSource = crud.getFaults();
+            db = new BaseRepository();
+
+            Bads.ItemsSource = db.getDefects().Select(x => x.Name);
             Bads.SelectedIndex = 0;
 
         }
@@ -36,25 +39,22 @@ namespace educational_practice.windows
 
         private void SaveOrder(object sender, RoutedEventArgs e)
         {
-            if (Model.Text.Trim().Equals("") || Desc.Text.Trim().Equals("") || Bads.Text.Trim().Equals(""))
+            if (Desc.Text.Trim().Equals("") || Bads.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Все поля должны быть заполнены");
             }
             else
             {
-                Order order = new Order
+                Invoice order = new Invoice
                 {
-                    Id = ++DB.counterOrder,
-                    Model = Model.Text.Trim(),
                     Description = Desc.Text.Trim(),
-                    Type = Bads.Text.Trim(),
-                    Status = "Не выполнено",
-                    date = DateTime.Now,
-                    idUser = Consts.ID_CURRENT_USER,
-                    idExecuter = -1
+                    Defect = db.getDefectByName(Bads.Text),
+                    Status = db.getStatusByName("Не выполнено"),
+                    StartDate = DateTime.Now,
+                    Client = db.getUserById(Consts.ID_CURRENT_USER),
                 };
 
-                crud.addOrder(order);
+                db.addInvoice(order);
 
                 Buttons.Back(this, new MainMenu());
             }

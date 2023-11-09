@@ -73,9 +73,9 @@
         </TextBlock >
 
         <TextBlock 
-            Grid.Row="4"
+            Grid.Row="3"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             FontSize="30"
             FontWeight="Bold">
             Описание проблемы
@@ -85,28 +85,9 @@
             Name="Desc"
             FontSize="20"
             Grid.Row="4" 
-            Margin="60 40 60 15"
+            Margin="60,0,60,15"
             BorderThickness="2"
             BorderBrush="Black">
-        </TextBox>
-
-        <TextBlock 
-            Grid.Row="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            TextWrapping="Wrap"
-            FontSize="30"
-            FontWeight="Bold">
-            Модель оборудования
-        </TextBlock>
-        <TextBox 
-            Name="Model"
-            Grid.Row="3" 
-            FontSize="20"
-            Margin="60 40 60 0"
-            BorderThickness="2"
-            BorderBrush="Black">
-
         </TextBox>
 
         <TextBlock 
@@ -124,7 +105,7 @@
             Name="Bads"
             Grid.Row="2"
             Margin="60 40 60 0">
-            
+
         </ComboBox>
 
         <Button 
