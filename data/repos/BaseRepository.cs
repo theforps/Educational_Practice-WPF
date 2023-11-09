@@ -72,6 +72,7 @@ namespace educational_practice.data.repos
                 .Include(x => x.Client)
                 .Include(x => x.Defect)
                 .Include(x => x.Executor)
+                .OrderByDescending(x => x.Id)
                 .ToList();
         }
 

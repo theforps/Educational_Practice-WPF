@@ -1,5 +1,4 @@
-﻿using educational_practice.data;
-using educational_practice.data.repos;
+﻿using educational_practice.data.repos;
 using educational_practice.models;
 using educational_practice.scripts;
 using System;
@@ -10,8 +9,8 @@ namespace educational_practice.windows
 {
     public partial class EditOrder : Window
     {
-        private int orderId;
         private BaseRepository db;
+        private Invoice order;
 
         public EditOrder()
         {
@@ -23,15 +22,19 @@ namespace educational_practice.windows
             InitializeComponent();
 
             db = new BaseRepository();
+            this.order = order;
+            FillForm();
+        }
 
+        private void FillForm()
+        {
             User user = db.getUserById(Consts.ID_CURRENT_USER);
 
-            orderId = order.Id;
             OrderNumber.Text = "Номер заявки " + order.Id;
             Disc.Text = order.Description;
             Status.ItemsSource = db.getStatuses().Select(x => x.Name);
             Status.Text = order.Status.Name;
-            Date.Text = order.StartDate.ToShortDateString();
+            Date.Text = order.StartDate.ToString();
             Type.ItemsSource = db.getDefects().Select(x => x.Name);
             Type.Text = order.Defect.Name;
             Comment.Text = order.Comment;
@@ -39,7 +42,7 @@ namespace educational_practice.windows
             Executor.ItemsSource = db.getExecutors().Select(x => x.Name + " " + x.Surname);
 
             if (order.Executor != null)
-            { 
+            {
                 Executor.Text = order.Executor.Name + " " + order.Executor.Surname;
             }
 
@@ -53,7 +56,6 @@ namespace educational_practice.windows
 
         private void SaveBut(object sender, RoutedEventArgs e)
         {
-            Invoice order = db.getInvoiceById(orderId);
             User executor = db.getUserByName(Executor.Text);
 
             if (executor == null ||

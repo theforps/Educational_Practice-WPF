@@ -10,6 +10,7 @@ namespace educational_practice.windows
     {
         private BaseRepository db;
         private Invoice order;
+        private int Id;
 
         public OrderInfo(int Id)
         {
@@ -17,17 +18,24 @@ namespace educational_practice.windows
 
             db = new BaseRepository();
 
+            this.Id = Id;
+
+            FillForm();
+        }
+
+        private void FillForm()
+        {
             order = db.getInvoiceById(Id);
 
             OrderNumber.Text = "Заявка № " + Id.ToString();
-            
+
             User user = db.getUserById(Consts.ID_CURRENT_USER);
 
             if (order != null)
             {
                 Disc.Text = order.Description;
                 Status.Text = order.Status.Name;
-                Date.Text = order.StartDate.ToShortDateString();
+                Date.Text = order.StartDate.ToString();
                 Type.Text = order.Defect.Name;
                 Client.Text = order.Client.Name + " " + order.Client.Surname;
 
@@ -44,7 +52,6 @@ namespace educational_practice.windows
 
             if (user.Role.Name.Equals("executor") || user.Role.Name.Equals("manager"))
                 EditBut.Visibility = Visibility.Visible;
-
         }
 
         private void Back(object sender, RoutedEventArgs e)

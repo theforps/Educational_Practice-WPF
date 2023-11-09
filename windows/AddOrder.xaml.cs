@@ -17,9 +17,7 @@ namespace educational_practice.windows
 
             db = new BaseRepository();
 
-            Bads.ItemsSource = db.getDefects().Select(x => x.Name);
-            Bads.SelectedIndex = 0;
-
+            FillBads();
         }
 
         private void Exit(object sender, RoutedEventArgs e)
@@ -58,6 +56,12 @@ namespace educational_practice.windows
 
                 Buttons.Back(this, new MainMenu());
             }
+        }
+
+        private void FillBads()
+        {
+            Bads.ItemsSource = db.getDefects().Select(x => x.Name);
+            Bads.SelectedIndex = 0;
         }
     }
 }

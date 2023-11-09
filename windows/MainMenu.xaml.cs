@@ -18,6 +18,11 @@ namespace educational_practice.windows
 
             db = new BaseRepository();
 
+            FillMenu();
+        }
+
+        private void FillMenu()
+        {
             User user = db.getUserById(Consts.ID_CURRENT_USER);
             TitleBar.Text = user.Name + " " + user.Surname;
 
