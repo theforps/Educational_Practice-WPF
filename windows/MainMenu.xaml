@@ -131,10 +131,17 @@
             Grid.Row="3"
             Width="550"
             BorderThickness="0"
-            ItemsSource="{Binding orders}" Margin="125,0,125,51">
+            ItemsSource="{Binding orders}" Margin="125,0,125,51"  >
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Width="500">
+                    <StackPanel Width="500" Focusable="False">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -161,6 +168,7 @@
                                 FontWeight="Bold" 
                                 Grid.Column="2"></TextBlock>
                             <Button 
+                                ContextMenu="{Binding Id}"
                                 HorizontalAlignment="Center" 
                                 Click="Info"  
                                 FontSize="15" 

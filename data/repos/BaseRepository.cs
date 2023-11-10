@@ -150,11 +150,14 @@ namespace educational_practice.data.repos
         {
             var list = db.invoices.Where(x => x.Status.Name.Equals("Выполнено") && x.EndDate > x.StartDate).ToList();
 
-            var result = list
+            int result = 0;
+
+            if(list.Count > 0)
+                result = (int)list
                 .Select(x => (x.EndDate - x.StartDate).Hours)
                 .Average();
 
-            return (int)result;
+            return result;
         }
     }
 }

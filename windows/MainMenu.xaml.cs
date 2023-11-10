@@ -2,6 +2,7 @@
 using educational_practice.models;
 using educational_practice.scripts;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace educational_practice.windows
 {
@@ -53,15 +54,20 @@ namespace educational_practice.windows
 
                 Orders.ItemsSource = orders;
             }
+            else
+            {
+                MessageBox.Show("Не найдено");
+            }
         }
 
         private void Info(object sender, RoutedEventArgs e)
         {
-            Invoice selectedOrder = (Invoice)Orders.SelectedItem;
+            Button button = (Button)sender;
+            Invoice choosenInvoice = (Invoice)button.DataContext;
 
-            if (selectedOrder != null)
+            if (choosenInvoice != null)
             {
-                Buttons.Back(this, new OrderInfo(selectedOrder.Id));
+                Buttons.Back(this, new OrderInfo(choosenInvoice.Id));
             }
         }
 
