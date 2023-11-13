@@ -44,6 +44,10 @@ namespace educational_practice.windows
                 if(order.StartDate < order.EndDate)
                 {
                     DateEnd.Text = order.EndDate.ToString();
+                    if (order.Client.Id == user.Id)
+                    {
+                        Feedback.Visibility = Visibility.Visible;
+                    }
                 }
                 else
                 {
@@ -87,6 +91,12 @@ namespace educational_practice.windows
         private void UpdateOrder(object sender, RoutedEventArgs e)
         {
             Buttons.Back(this, new EditOrder(order));
+        }
+
+        private void OpenFeedback(object sender, RoutedEventArgs e)
+        {
+            Feedback feedback = new Feedback();
+            feedback.Show();
         }
     }
 }
